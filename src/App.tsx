@@ -2,8 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import {useGetData} from "./app/hooks/api";
 
 function App() {
+  console.log(useGetData('http://localhost:3000/folders'))
+
   return (
     <div className="App">
       <header className="App-header">

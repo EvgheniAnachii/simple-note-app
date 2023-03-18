@@ -1,0 +1,38 @@
+{
+  "folders": [
+    {
+      "id": "folder-1",
+      "name": "My First Folder",
+      "hierarchy": ["folder-1"],
+      "fileIds": ["file-1"]
+    },
+    {
+      "id": "folder-2",
+      "name": "My Folder 2",
+      "hierarchy": ["folder-1", "folder-2"],
+      "fileIds": ["file-2"]
+    }
+  ],
+  "files": {
+    "file-1":  {
+      "id": "file-1",
+      "name": "File 1",
+      "contentId": "content-id-1"
+    },
+    "file-2":  {
+      "id": "file-1",
+      "name": "File 1",
+      "contentId": "content-id-1"
+    }
+  },
+  "content": {
+    "file-1": {
+      "file-id": "file-1",
+      "content": "Lorem ipsum sit amet 1"
+    },
+    "file-2": {
+      "file-id": "file-2",
+      "content": "Lorem ipsum sit amet 2"
+    }
+  }
+}
