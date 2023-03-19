@@ -1,58 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
 import { Counter } from './features/counter/Counter';
 import './App.css';
-import {useGetData} from "./app/hooks/api";
+import {useAppDispatch, useAppSelector} from "./app/hooks/hooks";
+import {getFileManagerData, getFilesFoldersData} from "./features/fileManager/fileManagerSlice";
+import FileManager from "./features/fileManager/FileManager";
 
 function App() {
-  console.log(useGetData('http://localhost:3000/folders'))
+  const filesAndFolders = useAppSelector(getFilesFoldersData);
+  const dispatch = useAppDispatch();
+  
+  useEffect(() => {
+    dispatch(getFileManagerData())
+  }, [])
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+        <FileManager treeItems={filesAndFolders} />
       </header>
     </div>
   );

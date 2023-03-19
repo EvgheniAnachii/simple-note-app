@@ -27,11 +27,11 @@
   },
   "content": {
     "file-1": {
-      "file-id": "file-1",
+      "fileId": "file-1",
       "content": "Lorem ipsum sit amet 1"
     },
     "file-2": {
-      "file-id": "file-2",
+      "fileId": "file-2",
       "content": "Lorem ipsum sit amet 2"
     }
   }
