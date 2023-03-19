@@ -19,9 +19,9 @@ export const getFileManagerData = createAsyncThunk(
 	'fileManager/fetchData',
 	async () => {
 		const response = await fetchData()
-		const [folders, files, content] = response
+		const [items, content] = response
 		
-		return getTree(folders, files, content)
+		return getTree({items, content})
 	}
 )
 

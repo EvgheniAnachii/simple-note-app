@@ -1,4 +1,4 @@
-import {TreeValueType} from "./types";
+import {TreeValuePayloadType, TreeValueType} from "./types";
 
 export enum Item {
 	FOLDER = 'folder',
@@ -12,24 +12,7 @@ export type FileManagerItemType = {
 	children: FileManagerItemType[]
 }
 
-type FileType = {
-	id: string,
-	name: string,
-	contentId: string
+export type ItemsPayloadType = {
+	items: TreeValuePayloadType<ItemType>[]
+	content: Record<string, string>
 }
-
-type ContentType = {
-	fileId: string,
-	content: string
-}
-
-export type FolderPayloadType = {
-	id: string,
-	name: string,
-	hierarchy: string[],
-	fileIds: string[]
-}
-
-export type FilesPayloadType = Record<string, FileType>
-
-export type ContentPayloadType = Record<string, ContentType>

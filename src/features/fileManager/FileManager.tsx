@@ -7,8 +7,8 @@ export type FileManagerPropsType = {
 
 const FileManager: FC<FileManagerPropsType> = ({ treeItems }) => {
 	return <ul>
-		{treeItems.map(item => {
-			return <li>
+		{treeItems.map((item, index) => {
+			return <li key={index}>
 				<span>{item.value.name}</span>
 				{item.children.length ? <FileManager treeItems={item.children} /> : null }
 			</li>

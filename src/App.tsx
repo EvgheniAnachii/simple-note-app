@@ -17,8 +17,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Counter />
-        <FileManager treeItems={filesAndFolders} />
       </header>
+      <FileManager treeItems={filesAndFolders} />
     </div>
   );
 }

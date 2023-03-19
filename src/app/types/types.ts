@@ -1,10 +1,18 @@
 export type TreeType<T> = {
 	id: string
 	type: T
-	hierarchy: string []
+	path: string
 }
 
 export type TreeValueType<T> = {
 	type: T
-	id: string
+	id: number
+}
+
+export type TreeValuePayloadType<T> = {
+	id: number
+	type: T
+	name: string
+	refId: number
+	parentId: number
 }
