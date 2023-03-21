@@ -61,3 +61,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Application looks the following way: \
+![img.png](img.png)
+
+Edit mode: \
+![img_1.png](img_1.png)
+
+Adding new item Step 1: \
+![img_2.png](img_2.png)
+
+Adding new item Step 2 (add new folder): \
+![img_3.png](img_3.png)
