@@ -47,6 +47,7 @@ const FileFolderItem: FC<FileFolderPresenterPropType> = ({item}) => {
 			<FileFolderControls
 				type={item.value.type}
 				id={item.value.id}
+				isRoot={!item.value.parentId}
 				onDelete={deleteItem}
 				onAdd={startAddingNewItem} />
 		</div>

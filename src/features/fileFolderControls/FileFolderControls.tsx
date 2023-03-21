@@ -3,19 +3,19 @@ import {FileFolderIdentityType, Item, ItemType} from "../../app/types/fileManage
 import { RiAddCircleFill, RiDeleteBinLine } from "react-icons/ri";
 import ItemCreateOptionsPopover from "../statelessComponents/itemCreateOptionsPopover/ItemCreateOptionsPopover";
 import { v4 as uuidv4 } from 'uuid';
-import {TreeValuePayloadType} from "../../app/types/types";
 
 type FileFolderControlsPropsType = {
 	isToDisplay?: boolean
 	type: ItemType
 	id: string
+	isRoot: boolean
 	onDelete: (data: FileFolderIdentityType) => void
 	onHover?: (ev: Event) => void
 	onAdd: (data: { id: string, type: ItemType, parentId: string }) => void
 }
 
 const FileFolderControls: FC<FileFolderControlsPropsType> = (props) => {
-	const { type, isToDisplay = true, id, onDelete, onAdd } = props
+	const { type, isToDisplay = true, id, isRoot, onDelete, onAdd } = props
 	const deleteItem = () => onDelete({ type, id })
 	
 	const startAddingNewItem = (option: ItemType) => {
@@ -25,8 +25,12 @@ const FileFolderControls: FC<FileFolderControlsPropsType> = (props) => {
 	return <>
 		{isToDisplay ?
 			<>
-				{type === Item.FOLDER ? <ItemCreateOptionsPopover onOptionSelect={startAddingNewItem}><RiAddCircleFill /></ItemCreateOptionsPopover> : <></>}
-				<RiDeleteBinLine onClick={deleteItem} />
+				{ type === Item.FOLDER ?
+					<ItemCreateOptionsPopover onOptionSelect={startAddingNewItem}>
+						<RiAddCircleFill />
+					</ItemCreateOptionsPopover> : null
+				}
+				{!isRoot && <RiDeleteBinLine onClick={deleteItem}/>}
 			</> : null}
 	</>
 }
