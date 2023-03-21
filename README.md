@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
 
+In order to start this project locally, you have to:
+1. Install nodeJs on you machine
+2. Install all needed dependencies by running `npm install` from project's root location
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -9,10 +13,21 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3001](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `npm run start-server`
+
+Runs the mocked backend.\
+Open [http://localhost:3000/items](http://localhost:3000) to view it in the browser.
+
+This server references to `db.json` file as `DB`.\
+Any actions (DELETE, UPDATE, CREATE) change the `db.json`\
+file content, so, you can follow instructions from the\
+terminal where `npm start-server` was called to create a \
+snapshot of initial data in case you need it.
 
 ### `npm test`
 

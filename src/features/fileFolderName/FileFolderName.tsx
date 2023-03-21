@@ -1,6 +1,7 @@
 import {FileManagerItemType} from "../../app/types/fileManagerTypes";
 import React, {FC, useRef, useState} from "react";
 import {assocPath} from "ramda";
+import {isEnterPressed} from "../../app/utils/filesManagerUtils";
 
 type FileFolderNamePropsType = {
 	item: FileManagerItemType,
@@ -17,7 +18,7 @@ const FileFolderName: FC<FileFolderNamePropsType> = ({item, onFileRename}) => {
 	
 	const cancelItemToUpdate = (ev: React.KeyboardEvent<HTMLElement>) => {
 		if (ev.code === 'Escape') setIsEditName(false)
-		if (ev.code === 'NumpadEnter') {
+		if (isEnterPressed(ev.code)) {
 			onFileRename(assocPath(['value', 'name'], inputRef.current.value, item))
 			setIsEditName(false)
 		}

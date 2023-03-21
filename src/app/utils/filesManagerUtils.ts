@@ -2,7 +2,7 @@ import {
 	FileManagerItemType, ItemType
 } from "../types/fileManagerTypes";
 import {TreeValuePayloadType} from "../types/types";
-import {curry, filter, includes, indexBy, map, pipe, prop, propEq, values} from "ramda";
+import {anyPass, curry, equals, filter, includes, indexBy, map, pipe, prop, propEq, values} from "ramda";
 import {PayloadAction} from "@reduxjs/toolkit";
 
 export const getTree = (items: TreeValuePayloadType<ItemType>[]): FileManagerItemType[] => {
@@ -47,3 +47,5 @@ export const removeDeletedItems = (action: PayloadAction<{ids: [], items: {}}>) 
 	}),
 	indexBy(prop('id'))
 )(action.payload.items)
+
+export const isEnterPressed = anyPass([equals('Enter'), equals('NumpadEnter')])

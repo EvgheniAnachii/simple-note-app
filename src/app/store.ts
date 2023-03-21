@@ -1,10 +1,8 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
 import fileManagerReducer from '../features/fileManager/fileManagerSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     fileManager: fileManagerReducer
   },
 });
