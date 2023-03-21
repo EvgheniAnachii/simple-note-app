@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from "./app/hooks/hooks";
 import {getDataStatus, getFileManagerData, getTreeFilesFolders} from "./features/fileManager/fileManagerSlice";
 import FileManager from "./features/fileManager/FileManager";
 import styled from "styled-components";
-import Loading from "./features/loading/Loading";
+import Loading from "./features/statelessComponents/loading/Loading";
 
 function App() {
   const filesAndFolders = useAppSelector(getTreeFilesFolders);
@@ -32,7 +32,7 @@ export default App;
 
 const LeftStyledWrapper = styled.div`
   display: grid;
-  grid-template-columns: 0.25fr 1fr;
+  grid-template-columns: auto 1fr;
   
   ul, li {
     list-style: none;
@@ -44,6 +44,10 @@ const LeftStyledWrapper = styled.div`
     align-items: center;
     gap: 5px;
     cursor: pointer;
+  }
+  
+  .file-folder-item.feature-item {
+    margin-left: 40px;
   }
   
   .file-folder-item:hover {

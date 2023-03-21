@@ -17,8 +17,16 @@ export async function updateItem(item: TreeValuePayloadType<ItemType>) {
 	})
 }
 
-export async function deleteItem(id: number) {
+export async function deleteItem(id: string) {
 	return fetch(`${baseUrl}/items/${id}`, {
 		method: 'DELETE'
+	})
+}
+
+export async function createItem(item: Partial<TreeValuePayloadType<ItemType>>) {
+	return fetch(`${baseUrl}/items`, {
+		method: 'POST',
+		body: JSON.stringify(item),
+		headers: { 'Content-Type': 'application/json'}
 	})
 }

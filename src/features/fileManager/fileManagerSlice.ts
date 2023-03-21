@@ -1,6 +1,6 @@
 import {FileFolderIdentityType, ItemType} from "../../app/types/fileManagerTypes";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {deleteItem, fetchData, updateItem} from "./fileManagerAPI";
+import {createItem, deleteItem, fetchData, updateItem} from "./fileManagerAPI";
 import {getItemPayloadIds, getTree, removeDeletedItems} from "../../app/utils/filesManagerUtils";
 import {RootState} from "../../app/store";
 import {assoc, indexBy, pipe, prop, values} from "ramda";
@@ -54,12 +54,23 @@ export const deleteFileManagerItem = createAsyncThunk(
 	}
 )
 
+export const createNewItem = createAsyncThunk(
+	'fileManager/createItem',
+	async (item: Partial<TreeValuePayloadType<ItemType>>) => {
+		await createItem(item)
+		const data = await fetchData()
+		
+		return data
+	}
+)
+
 export const fileManagerSlice = createSlice({
 	name: 'fileManager',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
+			// GET
 			.addCase(getFileManagerData.pending, (state) => {
 				state.status = 'loading';
 			})
@@ -72,7 +83,7 @@ export const fileManagerSlice = createSlice({
 				state.status = 'failed';
 				state.error = action.payload
 			})
-			// updateFileManagerItem
+			// UPDATE
 			.addCase(updateFileManagerItem.pending, (state, action) => {
 				state.status = 'loading'
 			})
@@ -83,16 +94,30 @@ export const fileManagerSlice = createSlice({
 			.addCase(updateFileManagerItem.rejected, (state) => {
 				state.status = 'failed';
 			})
-			// deleteFileManagerItem
+			// DELETE
 			.addCase(deleteFileManagerItem.pending, (state, action) => {
 				state.status = 'loading'
 			})
 			.addCase(deleteFileManagerItem.fulfilled, (state, action) => {
+				/* The alternative way to handle redux store updates could be: In the deleteFileManagerItem function
+					after DELETE request was sent, make a call to backend to get all items and here we could
+					just place these items without the need of use removeDeletedItems. *  */
 				const updatedRecords = removeDeletedItems(action as any)
 				
 				return {...assoc('items', updatedRecords, state), status: 'idle'}
 			})
 			.addCase(deleteFileManagerItem.rejected, (state) => {
+				state.status = 'failed';
+			})
+			// CREATE
+			.addCase(createNewItem.pending, (state, action) => {
+				state.status = 'loading'
+			})
+			.addCase(createNewItem.fulfilled, (state, action) => {
+				const updated = indexBy(prop('id'), action.payload[0])
+				return {...assoc('items', updated, state), status: 'idle'}
+			})
+			.addCase(createNewItem.rejected, (state) => {
 				state.status = 'failed';
 			});
 	}

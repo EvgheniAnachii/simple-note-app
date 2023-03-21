@@ -1,4 +1,4 @@
-import {BaseSyntheticEvent, FC, MouseEventHandler, useState} from "react";
+import {FC} from "react";
 import {FileManagerItemType} from "../../app/types/fileManagerTypes";
 import FileFolderItem from "../fileFolderItem/FileFolderItem";
 
@@ -12,7 +12,7 @@ const FileManager: FC<FileManagerPropsType> = ({ treeItems }) => {
 		{treeItems.map(item => {
 			return <li key={item.value.id} className={`${item.value.type}`} >
 				<FileFolderItem item={item} />
-				{item.children.length ? <FileManager treeItems={item.children} /> : null }
+				{item?.children?.length ? <FileManager treeItems={item.children} /> : null }
 			</li>
 		})}
 	</ul>

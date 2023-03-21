@@ -18,7 +18,7 @@ export const getTree = (items: TreeValuePayloadType<ItemType>[]): FileManagerIte
 		if (item.parentId) {
 			const parent = mapping[item.parentId]
 			const child = mapping[item.id]
-			parent.children.push(child)
+			parent?.children?.push(child)
 		}
 	}
 	
@@ -26,14 +26,11 @@ export const getTree = (items: TreeValuePayloadType<ItemType>[]): FileManagerIte
 }
 
 export const itemsPayloadIdentity = (items: Record<string, TreeValuePayloadType<ItemType>>) => items
-export const itemsRecordPayloadIdentity = (items: TreeValuePayloadType<ItemType>) => items
+
 export const getItemPayloadIds = curry((items, item) => pipe(
 	itemsPayloadIdentity,
 	values,
-	filter(record => {
-		const tt = propEq('parentId', item.id)(record as any)
-		return tt
-	}),
+	filter(propEq('parentId', item.id)),
 	map((item: any) => item.id)
 )(items))
 

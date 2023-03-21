@@ -2,36 +2,36 @@ import {TreeValuePayloadType} from "../../types/types";
 import {ItemType} from "../../types/fileManagerTypes";
 
 export const payloadMock = [{
-	"id": 12236,
+	"id": "12236",
 	"type": "folder",
 	"name": "My Documents",
 	"refId": null,
 	"parentId": null
-}, {"id": 123548, "type": "file", "refId": 1, "name": "Fitness records.txt", "parentId": 12236}, {
-	"id": 1236654,
+}, {"id": "123548", "type": "file", "refId": 1, "name": "Fitness records.txt", "parentId": "12236"}, {
+	"id": "1236654",
 	"type": "folder",
 	"refId": 2,
 	"name": "Travel Plans",
-	"parentId": 12236
-}, {"id": 12665489, "type": "folder", "refId": 3, "name": "Reading Technics", "parentId": 12236}, {
-	"id": 23565,
+	"parentId": "12236"
+}, {"id": "12665489", "type": "folder", "refId": 3, "name": "Reading Technics", "parentId": "12236"}, {
+	"id": "23565",
 	"type": "folder",
 	"refId": 4,
 	"name": "Learn FP",
-	"parentId": 12236
-}, {"id": 36549, "type": "file", "refId": 5, "name": "Pure Functions.txt", "parentId": 23565}, {
-	"id": 45643,
+	"parentId": "12236"
+}, {"id": "36549", "type": "file", "refId": 5, "name": "Pure Functions.txt", "parentId": "23565"}, {
+	"id": "45643",
 	"type": "folder",
 	"refId": 6,
 	"name": "University lectures",
-	"parentId": 12236
-}, {"id": 465798, "type": "file", "refId": 7, "name": "Technic 1.txt", "parentId": 12665489}, {
-	"id": 451324,
+	"parentId": "12236"
+}, {"id": "465798", "type": "file", "refId": 7, "name": "Technic 1.txt", "parentId": "12665489"}, {
+	"id": "451324",
 	"type": "file",
 	"refId": 8,
 	"name": "Technic 2.txt",
-	"parentId": 12665489
-}] as TreeValuePayloadType<ItemType>[]
+	"parentId": "12665489"
+}] as unknown as TreeValuePayloadType<ItemType>[]
 
 export const expected = [
 	{
