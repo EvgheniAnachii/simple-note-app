@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react';
-import { Counter } from './features/counter/Counter';
 import './App.css';
 import {useAppDispatch, useAppSelector} from "./app/hooks/hooks";
-import {getFileManagerData, getTreeFilesFolders} from "./features/fileManager/fileManagerSlice";
+import {getDataStatus, getFileManagerData, getTreeFilesFolders} from "./features/fileManager/fileManagerSlice";
 import FileManager from "./features/fileManager/FileManager";
 import styled from "styled-components";
+import Loading from "./features/loading/Loading";
 
 function App() {
   const filesAndFolders = useAppSelector(getTreeFilesFolders);
+  const retrieveStatus = useAppSelector(getDataStatus);
   const dispatch = useAppDispatch();
   
   useEffect(() => {
@@ -17,10 +18,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Simple File Manager App
+        File Manager App
       </header>
       <LeftStyledWrapper>
-        <FileManager treeItems={filesAndFolders} />
+        <Loading isLoading={retrieveStatus === 'loading'} />
+        {retrieveStatus !== 'failed' ? <FileManager treeItems={filesAndFolders}/> : <div>Failed</div>}
       </LeftStyledWrapper>
     </div>
   );

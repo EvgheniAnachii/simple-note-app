@@ -2,6 +2,8 @@ import {
 	FileManagerItemType, ItemType
 } from "../types/fileManagerTypes";
 import {TreeValuePayloadType} from "../types/types";
+import {curry, filter, includes, indexBy, map, pipe, prop, propEq, values} from "ramda";
+import {PayloadAction} from "@reduxjs/toolkit";
 
 export const getTree = (items: TreeValuePayloadType<ItemType>[]): FileManagerItemType[] => {
 	const roots: FileManagerItemType[] = []
@@ -22,3 +24,26 @@ export const getTree = (items: TreeValuePayloadType<ItemType>[]): FileManagerIte
 	
 	return roots
 }
+
+export const itemsPayloadIdentity = (items: Record<string, TreeValuePayloadType<ItemType>>) => items
+export const itemsRecordPayloadIdentity = (items: TreeValuePayloadType<ItemType>) => items
+export const getItemPayloadIds = curry((items, item) => pipe(
+	itemsPayloadIdentity,
+	values,
+	filter(record => {
+		const tt = propEq('parentId', item.id)(record as any)
+		return tt
+	}),
+	map((item: any) => item.id)
+)(items))
+
+export const removeDeletedItems = (action: PayloadAction<{ids: [], items: {}}>) => pipe(
+	itemsPayloadIdentity,
+	values,
+	filter<TreeValuePayloadType<ItemType>>(item => {
+		if (!item.parentId) return true
+		else if (includes(item.id, action.payload.ids)) return false
+		else return !includes(item.parentId, action.payload.ids)
+	}),
+	indexBy(prop('id'))
+)(action.payload.items)

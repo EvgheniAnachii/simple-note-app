@@ -1,6 +1,6 @@
 import {baseUrl} from "../../app/constants/apiConstants";
 import {TreeValuePayloadType} from "../../app/types/types";
-import {FileFolderIdentityType, ItemType} from "../../app/types/fileManagerTypes";
+import {ItemType} from "../../app/types/fileManagerTypes";
 
 export async function fetchData(options: RequestInit = {}) {
 	const items = await fetch(`${baseUrl}/items`, options)
