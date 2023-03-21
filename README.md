@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In order to start this project locally, you have to:
 1. Install nodeJs on you machine
 2. Install all needed dependencies by running `npm install` from project's root location
+3. Run `npm run start-server`
+4. Run `npm start`
 
 ## Available Scripts
 

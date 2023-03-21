@@ -22,13 +22,6 @@
       "parentId": 12236
     },
     {
-      "id": 12665489,
-      "type": "folder",
-      "refId": 3,
-      "name": "Reading Technics",
-      "parentId": 12236
-    },
-    {
       "id": 23565,
       "type": "folder",
       "refId": 4,
@@ -36,32 +29,11 @@
       "parentId": 12236
     },
     {
-      "id": 36549,
-      "type": "file",
-      "refId": 5,
-      "name": "asdf",
-      "parentId": 23565
-    },
-    {
       "id": 45643,
       "type": "folder",
       "refId": 6,
-      "name": "University lectures",
+      "name": "asdf",
       "parentId": 12236
-    },
-    {
-      "id": 465798,
-      "type": "file",
-      "refId": 7,
-      "name": "Technic 1.txt",
-      "parentId": 12665489
-    },
-    {
-      "id": 451324,
-      "type": "file",
-      "refId": 8,
-      "name": "adf",
-      "parentId": 12665489
     }
   ],
   "content": {

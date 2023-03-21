@@ -2,12 +2,11 @@ import styled from "styled-components";
 import {FC} from "react";
 
 const LoadingStyled = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
-  background: rgb(109 122 109 / 20%);
   text-align: center;
-  padding-top: 50vh;
+  padding-top: 10vh;
 `
 type LoadingPropsType = {
 	text?: string
