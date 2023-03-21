@@ -1,9 +1,9 @@
 import {FC} from "react";
-import {FileManagerItemType} from "../../app/types/fileManagerTypes";
+import {FileManagerItemNode} from "../../app/types/fileManagerTypes";
 import FileFolderItem from "../fileFolderItem/FileFolderItem";
 
 export type FileManagerPropsType = {
-	treeItems: FileManagerItemType[]
+	treeItems: FileManagerItemNode[]
 }
 
 const FileManager: FC<FileManagerPropsType> = ({ treeItems }) => {

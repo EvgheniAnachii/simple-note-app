@@ -4,10 +4,10 @@ import {createItem, deleteItem, fetchData, updateItem} from "./fileManagerAPI";
 import {getItemPayloadIds, getTree, removeDeletedItems} from "../../app/utils/filesManagerUtils";
 import {RootState} from "../../app/store";
 import {assoc, indexBy, pipe, prop, values} from "ramda";
-import {TreeValuePayloadType} from "../../app/types/types";
+import {FileManagerItemPayload} from "../../app/types/types";
 
 export interface FileManagerState {
-	items: Record<string, TreeValuePayloadType<ItemType>>
+	items: Record<string, FileManagerItemPayload<ItemType>>
 	status: 'idle' | 'loading' | 'failed'
 	error: unknown
 }
@@ -30,7 +30,7 @@ export const getFileManagerData = createAsyncThunk(
 
 export const updateFileManagerItem = createAsyncThunk(
 	'fileManager/updateItem',
-	async (item: TreeValuePayloadType<ItemType>) => {
+	async (item: FileManagerItemPayload<ItemType>) => {
 		await updateItem(item)
 		return item
 	}
@@ -56,7 +56,7 @@ export const deleteFileManagerItem = createAsyncThunk(
 
 export const createNewItem = createAsyncThunk(
 	'fileManager/createItem',
-	async (item: Partial<TreeValuePayloadType<ItemType>>) => {
+	async (item: Partial<FileManagerItemPayload<ItemType>>) => {
 		await createItem(item)
 		const data = await fetchData()
 		

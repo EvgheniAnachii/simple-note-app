@@ -1,11 +1,11 @@
-import {FileManagerItemType} from "../../app/types/fileManagerTypes";
+import {FileManagerItemNode} from "../../app/types/fileManagerTypes";
 import React, {FC, useRef, useState} from "react";
 import {assocPath} from "ramda";
 import {isEnterPressed} from "../../app/utils/filesManagerUtils";
 
 type FileFolderNamePropsType = {
-	item: FileManagerItemType,
-	onFileRename: (item: FileManagerItemType) => void
+	item: FileManagerItemNode,
+	onFileRename: (item: FileManagerItemNode) => void
 }
 
 const FileFolderName: FC<FileFolderNamePropsType> = ({item, onFileRename}) => {

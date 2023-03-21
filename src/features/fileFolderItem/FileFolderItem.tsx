@@ -1,23 +1,23 @@
-import {FileFolderIdentityType, FileManagerItemType, Item, ItemType} from "../../app/types/fileManagerTypes";
+import {FileFolderIdentityType, FileManagerItemNode, Item, ItemType} from "../../app/types/fileManagerTypes";
 import {FcFolder, FcImageFile} from "react-icons/fc";
 import {FC, useState} from "react";
 import FileFolderControls from "../fileFolderControls/FileFolderControls";
 import FileFolderName from "../fileFolderName/FileFolderName";
 import {createNewItem, deleteFileManagerItem, updateFileManagerItem} from "../fileManager/fileManagerSlice";
 import {useAppDispatch} from "../../app/hooks/hooks";
-import {TreeValuePayloadType} from "../../app/types/types";
+import {FileManagerItemPayload} from "../../app/types/types";
 import NewItemAdd from "../statelessComponents/newItemAdd/NewItemAdd";
 
 type FileFolderPresenterPropType = {
-	item: FileManagerItemType
+	item: FileManagerItemNode
 }
 
 const FileFolderItem: FC<FileFolderPresenterPropType> = ({item}) => {
 	const [isAddInProgress, setIsAddInProgress] = useState<boolean>(false)
-	const [futureItem, setFutureItem] = useState<TreeValuePayloadType<ItemType>|null>(null)
+	const [futureItem, setFutureItem] = useState<FileManagerItemPayload<ItemType>|null>(null)
 	const dispatch = useAppDispatch();
 	
-	const renameFile = (item: FileManagerItemType) => {
+	const renameFile = (item: FileManagerItemNode) => {
 		dispatch(updateFileManagerItem(item.value))
 	}
 	
@@ -25,7 +25,7 @@ const FileFolderItem: FC<FileFolderPresenterPropType> = ({item}) => {
 		dispatch(deleteFileManagerItem(data))
 	}
 	
-	const addNewItem = (data: TreeValuePayloadType<ItemType>) => {
+	const addNewItem = (data: FileManagerItemPayload<ItemType>) => {
 		dispatch(createNewItem(data))
 		cancelAddingNewItem()
 	}

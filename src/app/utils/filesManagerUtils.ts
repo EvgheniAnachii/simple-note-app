@@ -1,13 +1,13 @@
 import {
-	FileManagerItemType, ItemType
+	FileManagerItemNode, ItemType
 } from "../types/fileManagerTypes";
-import {TreeValuePayloadType} from "../types/types";
+import {FileManagerItemPayload} from "../types/types";
 import {anyPass, curry, equals, filter, includes, indexBy, map, pipe, prop, propEq, values} from "ramda";
 import {PayloadAction} from "@reduxjs/toolkit";
 
-export const getTree = (items: TreeValuePayloadType<ItemType>[]): FileManagerItemType[] => {
-	const roots: FileManagerItemType[] = []
-	const mapping = items.reduce<Record<string, FileManagerItemType>>((acc, item) => {
+export const getTree = (items: FileManagerItemPayload<ItemType>[]): FileManagerItemNode[] => {
+	const roots: FileManagerItemNode[] = []
+	const mapping = items.reduce<Record<string, FileManagerItemNode>>((acc, item) => {
 		acc[item.id] = {value: item, children: []}
 		if (!item.parentId)
 			roots.push(acc[item.id])
@@ -25,7 +25,7 @@ export const getTree = (items: TreeValuePayloadType<ItemType>[]): FileManagerIte
 	return roots
 }
 
-export const itemsPayloadIdentity = (items: Record<string, TreeValuePayloadType<ItemType>>) => items
+export const itemsPayloadIdentity = (items: Record<string, FileManagerItemPayload<ItemType>>) => items
 
 export const getItemPayloadIds = curry((items, item) => pipe(
 	itemsPayloadIdentity,
@@ -37,7 +37,7 @@ export const getItemPayloadIds = curry((items, item) => pipe(
 export const removeDeletedItems = (action: PayloadAction<{ids: [], items: {}}>) => pipe(
 	itemsPayloadIdentity,
 	values,
-	filter<TreeValuePayloadType<ItemType>>(item => {
+	filter<FileManagerItemPayload<ItemType>>(item => {
 		if (!item.parentId) return true
 		else if (includes(item.id, action.payload.ids)) return false
 		else return !includes(item.parentId, action.payload.ids)

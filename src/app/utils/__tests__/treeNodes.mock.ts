@@ -1,4 +1,4 @@
-import {TreeValuePayloadType} from "../../types/types";
+import {FileManagerItemPayload} from "../../types/types";
 import {ItemType} from "../../types/fileManagerTypes";
 
 export const payloadMock = [{
@@ -31,7 +31,7 @@ export const payloadMock = [{
 	"refId": 8,
 	"name": "Technic 2.txt",
 	"parentId": "12665489"
-}] as unknown as TreeValuePayloadType<ItemType>[]
+}] as unknown as FileManagerItemPayload<ItemType>[]
 
 export const expected = [
 	{

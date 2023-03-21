@@ -1,5 +1,5 @@
 import {baseUrl} from "../../app/constants/apiConstants";
-import {TreeValuePayloadType} from "../../app/types/types";
+import {FileManagerItemPayload} from "../../app/types/types";
 import {ItemType} from "../../app/types/fileManagerTypes";
 
 export async function fetchData(options: RequestInit = {}) {
@@ -9,7 +9,7 @@ export async function fetchData(options: RequestInit = {}) {
 	return Promise.all([items.json(), content.json()])
 }
 
-export async function updateItem(item: TreeValuePayloadType<ItemType>) {
+export async function updateItem(item: FileManagerItemPayload<ItemType>) {
 	return fetch(`${baseUrl}/items/${item.id}`, {
 		method: 'PUT',
 		body: JSON.stringify(item),
@@ -23,7 +23,7 @@ export async function deleteItem(id: string) {
 	})
 }
 
-export async function createItem(item: Partial<TreeValuePayloadType<ItemType>>) {
+export async function createItem(item: Partial<FileManagerItemPayload<ItemType>>) {
 	return fetch(`${baseUrl}/items`, {
 		method: 'POST',
 		body: JSON.stringify(item),

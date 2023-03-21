@@ -1,4 +1,4 @@
-export type TreeValuePayloadType<T> = {
+export type FileManagerItemPayload<T> = {
 	id: string
 	type: T
 	name: string
