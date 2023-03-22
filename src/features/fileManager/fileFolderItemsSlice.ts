@@ -58,13 +58,11 @@ export const createNewItem = createAsyncThunk(
 	'fileManager/createItem',
 	async (item: Partial<FileManagerItemPayload<ItemType>>) => {
 		await createItem(item)
-		const data = await fetchData()
-		
-		return data
+		return await fetchData()
 	}
 )
 
-export const fileManagerSlice = createSlice({
+export const fileFolderItemsSlice = createSlice({
 	name: 'fileManager',
 	initialState,
 	reducers: {},
@@ -124,12 +122,12 @@ export const fileManagerSlice = createSlice({
 })
 
 export const getTreeFilesFolders = (state: RootState) => {
-	return pipe(values, getTree)(state.fileManager.items)
+	return pipe(values, getTree)(state.filesAndFolders.items)
 }
 
-export const getPayloadItems = (state: RootState) => state.fileManager.items
-export const getDataStatus = (state: RootState) => state.fileManager.status
+export const getPayloadItems = (state: RootState) => state.filesAndFolders.items
+export const getDataStatus = (state: RootState) => state.filesAndFolders.status
 
-export const {} = fileManagerSlice.actions
+export const {} = fileFolderItemsSlice.actions
 
-export default fileManagerSlice.reducer
+export default fileFolderItemsSlice.reducer

@@ -3,7 +3,7 @@ import {FcFolder, FcImageFile} from "react-icons/fc";
 import {FC, useState} from "react";
 import FileFolderControls from "../fileFolderControls/FileFolderControls";
 import FileFolderName from "../fileFolderName/FileFolderName";
-import {createNewItem, deleteFileManagerItem, updateFileManagerItem} from "../fileManager/fileManagerSlice";
+import {createNewItem, deleteFileManagerItem, updateFileManagerItem} from "../fileManager/fileFolderItemsSlice";
 import {useAppDispatch} from "../../app/hooks/hooks";
 import {FileManagerItemPayload} from "../../app/types/types";
 import NewItemAdd from "../statelessComponents/newItemAdd/NewItemAdd";

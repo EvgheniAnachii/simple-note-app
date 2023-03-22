@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {useAppDispatch, useAppSelector} from "./app/hooks/hooks";
-import {getDataStatus, getFileManagerData, getTreeFilesFolders} from "./features/fileManager/fileManagerSlice";
+import {getDataStatus, getFileManagerData, getTreeFilesFolders} from "./features/fileManager/fileFolderItemsSlice";
 import FileManager from "./features/fileManager/FileManager";
 import styled from "styled-components";
 import Loading from "./features/statelessComponents/loading/Loading";

@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import fileManagerReducer from '../features/fileManager/fileManagerSlice';
+import fileFolderItemsSliceReducer from '../features/fileManager/fileFolderItemsSlice';
 
 export const store = configureStore({
   reducer: {
-    fileManager: fileManagerReducer
+    filesAndFolders: fileFolderItemsSliceReducer
   },
 });
 
