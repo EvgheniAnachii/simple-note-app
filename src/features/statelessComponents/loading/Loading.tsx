@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import {FC} from "react";
+import styled from 'styled-components'
+import {FC} from 'react'
 
 const LoadingStyled = styled.div`
   position: fixed;
@@ -13,9 +13,9 @@ type LoadingPropsType = {
 	isLoading: boolean
 }
 const Loading: FC<LoadingPropsType> = ({text = 'Loading...', isLoading}) => {
-	return <>
-		{isLoading ? <LoadingStyled>{text}</LoadingStyled> : null }
-	</>
+  return <>
+    {isLoading ? <LoadingStyled>{text}</LoadingStyled> : null }
+  </>
 }
 
 export default Loading

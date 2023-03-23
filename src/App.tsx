@@ -1,15 +1,15 @@
-import React, {useEffect} from 'react';
-import './App.css';
-import {useAppDispatch, useAppSelector} from "./app/hooks/hooks";
-import {getDataStatus, getFileManagerData, getTreeFilesFolders} from "./features/fileManager/fileFolderItemsSlice";
-import FileManager from "./features/fileManager/FileManager";
-import styled from "styled-components";
-import Loading from "./features/statelessComponents/loading/Loading";
+import React, {useEffect} from 'react'
+import './App.css'
+import {useAppDispatch, useAppSelector} from './app/hooks/hooks'
+import {getDataStatus, getFileManagerData, getTreeFilesFolders} from './features/fileManager/fileFolderItemsSlice'
+import FileManager from './features/fileManager/FileManager'
+import styled from 'styled-components'
+import Loading from './features/statelessComponents/loading/Loading'
 
 function App() {
-  const filesAndFolders = useAppSelector(getTreeFilesFolders);
-  const retrieveStatus = useAppSelector(getDataStatus);
-  const dispatch = useAppDispatch();
+  const filesAndFolders = useAppSelector(getTreeFilesFolders)
+  const retrieveStatus = useAppSelector(getDataStatus)
+  const dispatch = useAppDispatch()
   
   useEffect(() => {
     dispatch(getFileManagerData())
@@ -25,10 +25,10 @@ function App() {
         {retrieveStatus !== 'failed' ? <FileManager treeItems={filesAndFolders}/> : <div>Failed</div>}
       </LeftStyledWrapper>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
 
 const LeftStyledWrapper = styled.div`
   display: grid;

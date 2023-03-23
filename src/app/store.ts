@@ -1,11 +1,11 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import fileFolderItemsSliceReducer from '../features/fileManager/fileFolderItemsSlice';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
+import fileFolderItemsSliceReducer from '../features/fileManager/fileFolderItemsSlice'
 
 export const store = configureStore({
   reducer: {
     filesAndFolders: fileFolderItemsSliceReducer
   },
-});
+})
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

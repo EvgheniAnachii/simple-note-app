@@ -1,4 +1,4 @@
-import {FileManagerItemPayload} from "./types";
+import {FileManagerItemPayload} from './types'
 
 export enum Item {
 	FOLDER = 'folder',
