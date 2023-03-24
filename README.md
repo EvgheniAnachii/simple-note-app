@@ -59,7 +59,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## Collapse/Expand
 There is an opened PR for collapse/expand functionality. Feel free to check it out and see how it works. Link to [PR](https://github.com/EvgheniAnachii/simple-note-app/pull/1), [link to branch](https://github.com/EvgheniAnachii/simple-note-app/tree/add_collapse_expand)
 
-Application looks the following way: \
+## Screenshots of the app \
 ![img.png](img.png)
 
 Edit mode: \
