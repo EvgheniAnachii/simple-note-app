@@ -16,3 +16,18 @@ export type FileFolderIdentityType = {
 	type: ItemType,
 	id: string
 }
+
+export enum ExpandCollapseAction {
+	EXPAND = 'expand',
+	COLLAPSE = 'collapse'
+}
+
+export type ExpandCollapseType = ExpandCollapseAction.EXPAND | ExpandCollapseAction.COLLAPSE
+
+export type ExpandCollapseActionType = {
+	tree: FileManagerItemNode[],
+	id: string,
+	actionType: ExpandCollapseType
+}
+
+export type ItemsVisibility = { isExpanded: boolean, isDisplayed: boolean }

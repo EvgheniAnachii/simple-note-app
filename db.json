@@ -64,20 +64,6 @@
       "refId": 0
     },
     {
-      "id": "c270748c-b753-485e-a14d-de87e131e05d",
-      "parentId": "451402e5-9339-4141-a957-f3773c112f01",
-      "type": "file",
-      "name": "FIle 2",
-      "refId": 0
-    },
-    {
-      "id": "eaacedae-d164-4ecd-bf20-294a789cff39",
-      "parentId": "451402e5-9339-4141-a957-f3773c112f01",
-      "type": "file",
-      "name": "File 4",
-      "refId": 0
-    },
-    {
       "id": "8bdb647a-fb28-4f09-8dde-095b330ba2c9",
       "parentId": "46460fc7-45a7-429d-b102-75e312a98a29",
       "type": "file",
@@ -103,6 +89,34 @@
       "parentId": "1236654",
       "type": "file",
       "name": "New File",
+      "refId": 0
+    },
+    {
+      "id": "389dfd23-2f05-4b4f-a469-12473c2f2ba8",
+      "parentId": "451402e5-9339-4141-a957-f3773c112f01",
+      "type": "file",
+      "name": "Another file",
+      "refId": 0
+    },
+    {
+      "id": "d03b95c5-42a7-423a-9460-6f4cdc3bd078",
+      "parentId": "45643",
+      "type": "folder",
+      "name": "Hi",
+      "refId": 0
+    },
+    {
+      "id": "3589e5dd-c005-4846-935a-742ae616d5bc",
+      "parentId": "45643",
+      "type": "file",
+      "name": "New File",
+      "refId": 0
+    },
+    {
+      "id": "2a64a211-c301-4c39-8ee0-4a73b3b8d079",
+      "parentId": "d03b95c5-42a7-423a-9460-6f4cdc3bd078",
+      "type": "file",
+      "name": "asdf",
       "refId": 0
     }
   ],

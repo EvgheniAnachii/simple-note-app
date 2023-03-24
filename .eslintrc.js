@@ -18,7 +18,8 @@ module.exports = {
   'plugins': [
     'react',
     '@typescript-eslint',
-    'react-hooks'
+    'react-hooks',
+    'import'
   ],
   'rules': {
     'indent': [
@@ -31,7 +32,8 @@ module.exports = {
     ],
     'quotes': [
       'error',
-      'single'
+      'single',
+      { 'avoidEscape': true }
     ],
     'semi': [
       'error',
