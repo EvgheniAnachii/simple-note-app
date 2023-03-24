@@ -60,13 +60,21 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 Folders in this app are collapsable.
 
 ## Screenshots of the app \
-![img.png](img.png)
 
-Edit mode: \
-![img_1.png](img_1.png)
+Initial view: \
+![img_4.png](img_4.png)
 
-Adding new item Step 1: \
-![img_2.png](img_2.png)
+Root folder expanded: \
+![img_5.png](img_5.png)
 
-Adding new item Step 2 (add new folder): \
-![img_3.png](img_3.png)
+Edit name of existing item Step 1: \
+![img_9.png](img_9.png)
+
+Edit name updated: \
+![img_10.png](img_10.png)
+
+Adding new Item Step 1: \
+![img_11.png](img_11.png)
+
+Adding new Item Step 2: \
+![img_12.png](img_12.png)

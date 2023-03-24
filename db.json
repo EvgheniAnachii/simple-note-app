@@ -32,7 +32,7 @@
       "id": "23565",
       "type": "folder",
       "refId": 4,
-      "name": "df",
+      "name": "New Name",
       "parentId": "12236"
     },
     {
@@ -117,6 +117,13 @@
       "parentId": "d03b95c5-42a7-423a-9460-6f4cdc3bd078",
       "type": "file",
       "name": "asdf",
+      "refId": 0
+    },
+    {
+      "id": "b3dc5286-22ea-41c9-ad08-d67c580d97c7",
+      "parentId": "23565",
+      "type": "file",
+      "name": "Drafts",
       "refId": 0
     }
   ],
