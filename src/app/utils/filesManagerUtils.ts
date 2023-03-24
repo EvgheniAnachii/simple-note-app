@@ -1,5 +1,10 @@
 import {
-  FileManagerItemNode, ItemType
+  ExpandCollapseAction,
+  ExpandCollapseActionType,
+  ExpandCollapseType,
+  FileManagerItemNode,
+  ItemsVisibility,
+  ItemType
 } from '../types/fileManagerTypes'
 import {FileManagerItemPayload} from '../types/types'
 import {anyPass, curry, equals, filter, includes, indexBy, map, pipe, prop, propEq, values} from 'ramda'
@@ -13,16 +18,44 @@ export const getTree = (items: FileManagerItemPayload<ItemType>[]): FileManagerI
       roots.push(acc[item.id])
     return acc
   }, {})
-	
-  for(const item of items) {
+  
+  for (const item of items) {
     if (item.parentId) {
       const parent = mapping[item.parentId]
       const child = mapping[item.id]
       parent?.children?.push(child)
     }
   }
-	
+  
   return roots
+}
+
+type FileManagerItemNodeOrNull = FileManagerItemNode | null
+
+const findNode = (nodes: FileManagerItemNode[], id: string, foundNode: FileManagerItemNodeOrNull = null): any => {
+  for (let i = 0; i < nodes.length; i++)
+    if (nodes[i].value.id === id) {
+      return nodes[i]
+    } else {
+      const found = findNode(nodes[i]?.children || [], id, foundNode)
+      if (found) return found
+    }
+}
+
+export const updateVisibilitySettings = (settings: Record<string, ItemsVisibility>, node: FileManagerItemNode, actionType: ExpandCollapseType) => {
+  const parentVisibility = {isExpanded: actionType === 'expand', isDisplayed: true}
+  settings[node.value.id] = parentVisibility
+  
+  node?.children?.forEach(node => {
+    settings[node.value.id].isDisplayed = parentVisibility.isExpanded
+  })
+  
+  return settings
+}
+
+export const getCollapseExpandSettings = (data: ExpandCollapseActionType, settings: Record<string, ItemsVisibility>) => {
+  const foundNode = findNode(data.tree, data.id)
+  return updateVisibilitySettings(settings, foundNode, data.actionType)
 }
 
 export const itemsPayloadIdentity = (items: Record<string, FileManagerItemPayload<ItemType>>) => items
@@ -34,7 +67,8 @@ export const getItemPayloadIds = curry((items, item) => pipe(
   map((item: any) => item.id)
 )(items))
 
-export const removeDeletedItems = (action: PayloadAction<{ids: [], items: Record<string, FileManagerItemPayload<ItemType>>
+export const removeDeletedItems = (action: PayloadAction<{
+  ids: [], items: Record<string, FileManagerItemPayload<ItemType>>
 }>) => pipe(
   itemsPayloadIdentity,
   values,

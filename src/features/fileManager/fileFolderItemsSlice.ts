@@ -5,6 +5,7 @@ import {getItemPayloadIds, getTree, removeDeletedItems} from '../../app/utils/fi
 import {RootState} from '../../app/store'
 import {assoc, indexBy, pipe, prop, values} from 'ramda'
 import {FileManagerItemPayload} from '../../app/types/types'
+import {setDefaultExpandCollapseState} from './metaDataSlice'
 
 export interface FileManagerState {
 	items: Record<string, FileManagerItemPayload<ItemType>>
@@ -20,10 +21,10 @@ const initialState: FileManagerState = {
 
 export const getFileManagerData = createAsyncThunk(
   'fileManager/fetchData',
-  async () => {
+  async (__, { dispatch }) => {
     const response = await fetchData()
     const [items, content] = response
-		
+    dispatch(setDefaultExpandCollapseState(items))
     return items
   }
 )
@@ -46,7 +47,7 @@ export const deleteFileManagerItem = createAsyncThunk(
 			
       await Promise.all(arr.map(id => deleteItem(id)))
 
-      return {ids: [item.id, ...ids], items: getPayloadItems(getState() as RootState)} // response[0]
+      return {ids: [item.id, ...ids], items: getPayloadItems(getState() as RootState)}
     } catch (error: any) {
       rejectWithValue(error.message)
       return {ids: [], items: {}}

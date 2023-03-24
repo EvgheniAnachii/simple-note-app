@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import fileFolderItemsSliceReducer from '../features/fileManager/fileFolderItemsSlice'
+import metaDataSliceReducer from '../features/fileManager/metaDataSlice'
 
 export const store = configureStore({
   reducer: {
-    filesAndFolders: fileFolderItemsSliceReducer
+    filesAndFolders: fileFolderItemsSliceReducer,
+    metaData: metaDataSliceReducer
   },
 })
 

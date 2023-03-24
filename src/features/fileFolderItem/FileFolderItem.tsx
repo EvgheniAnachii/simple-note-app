@@ -1,21 +1,38 @@
-import {FileFolderIdentityType, FileManagerItemNode, Item, ItemType} from '../../app/types/fileManagerTypes'
-import {FcFolder, FcImageFile} from 'react-icons/fc'
-import {FC, useState} from 'react'
+import {
+  ExpandCollapseAction,
+  ExpandCollapseType,
+  FileFolderIdentityType,
+  FileManagerItemNode,
+  Item, ItemsVisibility,
+  ItemType
+} from '../../app/types/fileManagerTypes'
+import {FcFolder, FcOpenedFolder, FcImageFile} from 'react-icons/fc'
+
+import {createElement, FC, useState} from 'react'
 import FileFolderControls from '../fileFolderControls/FileFolderControls'
 import FileFolderName from '../fileFolderName/FileFolderName'
-import {createNewItem, deleteFileManagerItem, updateFileManagerItem} from '../fileManager/fileFolderItemsSlice'
-import {useAppDispatch} from '../../app/hooks/hooks'
+import {
+  createNewItem,
+  deleteFileManagerItem,
+  getTreeFilesFolders,
+  updateFileManagerItem
+} from '../fileManager/fileFolderItemsSlice'
+import {useAppDispatch, useAppSelector} from '../../app/hooks/hooks'
 import {FileManagerItemPayload} from '../../app/types/types'
 import NewItemAdd from '../statelessComponents/newItemAdd/NewItemAdd'
+import {addVisibilityForNewItem, updateExpandCollapseState} from '../fileManager/metaDataSlice'
+import Folder from '../statelessComponents/Folder'
 
 type FileFolderPresenterPropType = {
 	item: FileManagerItemNode
+	visibility: ItemsVisibility
 }
 
-const FileFolderItem: FC<FileFolderPresenterPropType> = ({item}) => {
+const FileFolderItem: FC<FileFolderPresenterPropType> = ({item, visibility}) => {
+  const dispatch = useAppDispatch()
+  const filesAndFolders = useAppSelector(getTreeFilesFolders)
   const [isAddInProgress, setIsAddInProgress] = useState<boolean>(false)
   const [futureItem, setFutureItem] = useState<FileManagerItemPayload<ItemType>|null>(null)
-  const dispatch = useAppDispatch()
 	
   const renameFile = (item: FileManagerItemNode) => {
     dispatch(updateFileManagerItem(item.value))
@@ -28,6 +45,7 @@ const FileFolderItem: FC<FileFolderPresenterPropType> = ({item}) => {
   const addNewItem = (data: FileManagerItemPayload<ItemType>) => {
     dispatch(createNewItem(data))
     cancelAddingNewItem()
+    dispatch(addVisibilityForNewItem({ type: data.type, id: data.id, parentId: data.parentId }))
   }
 	
   const startAddingNewItem = (data: { id: string, type: ItemType, parentId: string }) => {
@@ -39,10 +57,20 @@ const FileFolderItem: FC<FileFolderPresenterPropType> = ({item}) => {
     setFutureItem(null)
     setIsAddInProgress(false)
   }
+  
+  const collapseExpand = () => {
+    const payload = {
+      tree: filesAndFolders,
+      id: item.value.id,
+      actionType: visibility.isExpanded ? ExpandCollapseAction.COLLAPSE : ExpandCollapseAction.EXPAND
+    }
+
+    dispatch(updateExpandCollapseState(payload))
+  }
 	
   return <>
     <div className="file-folder-item">
-      {item.value.type === Item.FOLDER ? <FcFolder size={25} /> : <FcImageFile size={25} />}
+      {item.value.type === Item.FOLDER ? <Folder isExpended={visibility.isExpanded} onClick={collapseExpand} /> : <FcImageFile size={25} />}
       <FileFolderName item={item} onFileRename={renameFile} />
       <FileFolderControls
         type={item.value.type}

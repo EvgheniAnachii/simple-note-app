@@ -27,7 +27,7 @@ const FileFolderName: FC<FileFolderNamePropsType> = ({item, onFileRename}) => {
   return <>
     {!isEditName ? <span onClick={makeItemEditable}>
       {item.value.name}
-    </span> : <input onBlur={() => setIsEditName(false)} autoFocus ref={inputRef} onKeyUp={cancelItemToUpdate} />}
+    </span> : <input onBlur={() => setIsEditName(false)} autoFocus ref={inputRef} onKeyUp={cancelItemToUpdate}/>}
   </>
 }
 
