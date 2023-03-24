@@ -1,10 +1,10 @@
-import {Item, ItemType} from '../../../app/types/fileManagerTypes'
+import {Item, ItemType} from '../../app/types/fileManagerTypes'
 import React, {FC, useRef} from 'react'
-import {FileManagerItemPayload} from '../../../app/types/types'
+import {FileManagerItemPayload} from '../../app/types/types'
 import {FcFolder, FcImageFile} from 'react-icons/fc'
 import {GiConfirmed} from 'react-icons/gi'
 import {AiFillCloseCircle} from 'react-icons/ai'
-import {isEnterPressed} from '../../../app/utils/filesManagerUtils'
+import {isEnterPressed} from '../../app/utils/filesManagerUtils'
 
 type NewItemAddPropsType = {
 	item: FileManagerItemPayload<ItemType> | null

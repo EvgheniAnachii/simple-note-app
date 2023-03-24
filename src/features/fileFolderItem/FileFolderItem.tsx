@@ -19,7 +19,7 @@ import {
 } from '../fileManager/fileFolderItemsSlice'
 import {useAppDispatch, useAppSelector} from '../../app/hooks/hooks'
 import {FileManagerItemPayload} from '../../app/types/types'
-import NewItemAdd from '../statelessComponents/newItemAdd/NewItemAdd'
+import NewItemAdd from '../statelessComponents/NewItemAdd'
 import {addVisibilityForNewItem, updateExpandCollapseState} from '../fileManager/metaDataSlice'
 import Folder from '../statelessComponents/Folder'
 

@@ -1,6 +1,6 @@
 import {Button, Popover} from 'antd'
 import React, {FC} from 'react'
-import {Item, ItemType} from '../../../app/types/fileManagerTypes'
+import {Item, ItemType} from '../../app/types/fileManagerTypes'
 
 const content = (selectOption: (actionType: ItemType) => () => void) => {
   return <div>
