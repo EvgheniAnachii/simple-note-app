@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 type FileFolderControlsPropsType = {
 	isToDisplay?: boolean
-	type: ItemType
+	expandable: boolean
 	id: string
 	isRoot: boolean
 	onDelete: (data: FileFolderIdentityType) => void
@@ -15,8 +15,8 @@ type FileFolderControlsPropsType = {
 }
 
 const FileFolderControls: FC<FileFolderControlsPropsType> = (props) => {
-  const { type, isToDisplay = true, id, isRoot, onDelete, onAdd } = props
-  const deleteItem = () => onDelete({ type, id })
+  const { expandable, isToDisplay = true, id, isRoot, onDelete, onAdd } = props
+  const deleteItem = () => onDelete({ expandable, id })
 	
   const startAddingNewItem = (option: ItemType) => {
     onAdd({ id: uuidv4(), parentId: id, type: option })
@@ -25,7 +25,7 @@ const FileFolderControls: FC<FileFolderControlsPropsType> = (props) => {
   return <>
     {isToDisplay ?
       <>
-        { type === Item.FOLDER ?
+        { expandable ?
           <ItemCreateOptionsPopover onOptionSelect={startAddingNewItem}>
             <RiAddCircleFill />
           </ItemCreateOptionsPopover> : null
