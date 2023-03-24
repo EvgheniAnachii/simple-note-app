@@ -27,7 +27,7 @@ const reducers = {
   addVisibilityForNewItem: (state: MetaDataState, action: PayloadAction<FileFolderIdentityType & {parentId: string}>) => {
     const expanded = { isExpanded: false }
     const displayed = { isDisplayed: state[action.payload.parentId].isExpanded }
-    const result = action.payload.type === Item.FOLDER ? { ...expanded, ...displayed } : displayed
+    const result = action.payload.expandable ? { ...expanded, ...displayed } : displayed
     
     return assoc(action.payload.id, result, state) as MetaDataState
   },

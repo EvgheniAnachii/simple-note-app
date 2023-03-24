@@ -13,7 +13,7 @@ export type FileManagerItemNode = {
 }
 
 export type FileFolderIdentityType = {
-	type: ItemType,
+	expandable: boolean,
 	id: string
 }
 

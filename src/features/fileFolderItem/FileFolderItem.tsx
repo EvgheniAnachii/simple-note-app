@@ -1,14 +1,14 @@
 import {
   ExpandCollapseAction,
-  ExpandCollapseType,
   FileFolderIdentityType,
   FileManagerItemNode,
-  Item, ItemsVisibility,
+  Item,
+  ItemsVisibility,
   ItemType
 } from '../../app/types/fileManagerTypes'
-import {FcFolder, FcOpenedFolder, FcImageFile} from 'react-icons/fc'
+import {FcImageFile} from 'react-icons/fc'
 
-import {createElement, FC, useState} from 'react'
+import {FC, useState} from 'react'
 import FileFolderControls from '../fileFolderControls/FileFolderControls'
 import FileFolderName from '../fileFolderName/FileFolderName'
 import {
@@ -45,7 +45,7 @@ const FileFolderItem: FC<FileFolderPresenterPropType> = ({item, visibility}) => 
   const addNewItem = (data: FileManagerItemPayload<ItemType>) => {
     dispatch(createNewItem(data))
     cancelAddingNewItem()
-    dispatch(addVisibilityForNewItem({ type: data.type, id: data.id, parentId: data.parentId }))
+    dispatch(addVisibilityForNewItem({ expandable: data.type === Item.FOLDER, id: data.id, parentId: data.parentId }))
   }
 	
   const startAddingNewItem = (data: { id: string, type: ItemType, parentId: string }) => {
@@ -73,7 +73,7 @@ const FileFolderItem: FC<FileFolderPresenterPropType> = ({item, visibility}) => 
       {item.value.type === Item.FOLDER ? <Folder isExpended={visibility.isExpanded} onClick={collapseExpand} /> : <FcImageFile size={25} />}
       <FileFolderName item={item} onFileRename={renameFile} />
       <FileFolderControls
-        type={item.value.type}
+        expandable={item.value.type === Item.FOLDER}
         id={item.value.id}
         isRoot={!item.value.parentId}
         onDelete={deleteItem}

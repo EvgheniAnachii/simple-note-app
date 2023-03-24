@@ -17,9 +17,8 @@ const NewItemAdd: FC<NewItemAddPropsType> = ({item, onCancel, onConfirm}) => {
 	
   const onEscOrEnter = (ev: React.KeyboardEvent<HTMLElement>) => {
     if (ev.code === 'Escape') onCancel()
-    if (isEnterPressed(ev.code) && item && inputRef?.current.value) {
+    if (isEnterPressed(ev.code) && item && inputRef?.current.value)
       onConfirm({...item, name: inputRef?.current.value})
-    }
   }
 	
   return <>
