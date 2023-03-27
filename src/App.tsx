@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from './app/hooks/hooks'
 import {getDataStatus, getFileManagerData, getTreeFilesFolders} from './features/fileManager/fileFolderItemsSlice'
 import FileManager from './features/fileManager/FileManager'
 import styled from 'styled-components'
-import Loading from './features/statelessComponents/Loading'
+import Loading from './features/commonComponents/Loading'
 
 function App() {
   const filesAndFolders = useAppSelector(getTreeFilesFolders)

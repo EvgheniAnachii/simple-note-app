@@ -19,9 +19,9 @@ import {
 } from '../fileManager/fileFolderItemsSlice'
 import {useAppDispatch, useAppSelector} from '../../app/hooks/hooks'
 import {FileManagerItemPayload} from '../../app/types/types'
-import NewItemAdd from '../statelessComponents/NewItemAdd'
+import NewItemAdd from '../commonComponents/NewItemAdd'
 import {addVisibilityForNewItem, updateExpandCollapseState} from '../fileManager/metaDataSlice'
-import Folder from '../statelessComponents/Folder'
+import Folder from '../commonComponents/Folder'
 
 type FileFolderPresenterPropType = {
 	item: FileManagerItemNode

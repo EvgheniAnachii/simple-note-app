@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import {FileFolderIdentityType, Item, ItemType} from '../../app/types/fileManagerTypes'
 import { RiAddCircleFill, RiDeleteBinLine } from 'react-icons/ri'
-import ItemCreateOptionsPopover from '../statelessComponents/ItemCreateOptionsPopover'
+import ItemCreateOptionsPopover from '../commonComponents/ItemCreateOptionsPopover'
 import { v4 as uuidv4 } from 'uuid'
 
 type FileFolderControlsPropsType = {
