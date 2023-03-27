@@ -35,96 +35,96 @@ export const payloadMock = [{
 
 export const expected = [
   {
-    "children": [
+    'children': [
       {
-        "children": [],
-        "value": {
-          "id": "123548",
-          "name": "Fitness records.txt",
-          "parentId": "12236",
-          "refId": 1,
-          "type": "file"
+        'children': [],
+        'value': {
+          'id': '123548',
+          'name': 'Fitness records.txt',
+          'parentId': '12236',
+          'refId': 1,
+          'type': 'file'
         }
       },
       {
-        "children": [],
-        "value": {
-          "id": "1236654",
-          "name": "Travel Plans",
-          "parentId": "12236",
-          "refId": 2,
-          "type": "folder"
+        'children': [],
+        'value': {
+          'id': '1236654',
+          'name': 'Travel Plans',
+          'parentId': '12236',
+          'refId': 2,
+          'type': 'folder'
         }
       },
       {
-        "children": [
+        'children': [
           {
-            "children": [],
-            "value": {
-              "id": "465798",
-              "name": "Technic 1.txt",
-              "parentId": "12665489",
-              "refId": 7,
-              "type": "file"
+            'children': [],
+            'value': {
+              'id': '465798',
+              'name': 'Technic 1.txt',
+              'parentId': '12665489',
+              'refId': 7,
+              'type': 'file'
             }
           },
           {
-            "children": [],
-            "value": {
-              "id": "451324",
-              "name": "Technic 2.txt",
-              "parentId": "12665489",
-              "refId": 8,
-              "type": "file"
+            'children': [],
+            'value': {
+              'id': '451324',
+              'name': 'Technic 2.txt',
+              'parentId': '12665489',
+              'refId': 8,
+              'type': 'file'
             }
           }
         ],
-        "value": {
-          "id": "12665489",
-          "name": "Reading Technics",
-          "parentId": "12236",
-          "refId": 3,
-          "type": "folder"
+        'value': {
+          'id': '12665489',
+          'name': 'Reading Technics',
+          'parentId': '12236',
+          'refId': 3,
+          'type': 'folder'
         }
       },
       {
-        "children": [
+        'children': [
           {
-            "children": [],
-            "value": {
-              "id": "36549",
-              "name": "Pure Functions.txt",
-              "parentId": "23565",
-              "refId": 5,
-              "type": "file"
+            'children': [],
+            'value': {
+              'id': '36549',
+              'name': 'Pure Functions.txt',
+              'parentId': '23565',
+              'refId': 5,
+              'type': 'file'
             }
           }
         ],
-        "value": {
-          "id": "23565",
-          "name": "Learn FP",
-          "parentId": "12236",
-          "refId": 4,
-          "type": "folder"
+        'value': {
+          'id': '23565',
+          'name': 'Learn FP',
+          'parentId': '12236',
+          'refId': 4,
+          'type': 'folder'
         }
       },
       {
-        "children": [],
-        "value": {
-          "id": "45643",
-          "name": "University lectures",
-          "parentId": "12236",
-          "refId": 6,
-          "type": "folder"
+        'children': [],
+        'value': {
+          'id': '45643',
+          'name': 'University lectures',
+          'parentId': '12236',
+          'refId': 6,
+          'type': 'folder'
         }
       }
     ],
-    "value": {
-      "id": "12236",
-      "name": "My Documents",
-      "parentId": null,
-      "refId": null,
-      "type": "folder"
+    'value': {
+      'id': '12236',
+      'name': 'My Documents',
+      'parentId': null,
+      'refId': null,
+      'type': 'folder'
     }
   }
 ]

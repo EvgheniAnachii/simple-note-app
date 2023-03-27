@@ -2,7 +2,7 @@ import {
   ExpandCollapseAction,
   ExpandCollapseActionType,
   ExpandCollapseType,
-  FileManagerItemNode,
+  FileManagerItemNode, FileManagerItemNodeOrNull,
   ItemsVisibility,
   ItemType
 } from '../types/fileManagerTypes'
@@ -30,8 +30,6 @@ export const getTree = (items: FileManagerItemPayload<ItemType>[]): FileManagerI
   return roots
 }
 
-type FileManagerItemNodeOrNull = FileManagerItemNode | null
-
 const findNode = (nodes: FileManagerItemNode[], id: string, foundNode: FileManagerItemNodeOrNull = null): any => {
   for (let i = 0; i < nodes.length; i++)
     if (nodes[i].value.id === id) {
@@ -43,7 +41,7 @@ const findNode = (nodes: FileManagerItemNode[], id: string, foundNode: FileManag
 }
 
 export const updateVisibilitySettings = (settings: Record<string, ItemsVisibility>,
-                                         node: FileManagerItemNode, actionType: ExpandCollapseType) => {
+  node: FileManagerItemNode, actionType: ExpandCollapseType) => {
   const parentVisibility = {isExpanded: actionType === 'expand', isDisplayed: true}
   settings[node.value.id] = parentVisibility
   

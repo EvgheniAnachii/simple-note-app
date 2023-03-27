@@ -31,3 +31,5 @@ export type ExpandCollapseActionType = {
 }
 
 export type ItemsVisibility = { isExpanded: boolean, isDisplayed: boolean }
+
+export type FileManagerItemNodeOrNull = FileManagerItemNode | null
