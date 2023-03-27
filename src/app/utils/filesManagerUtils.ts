@@ -42,7 +42,8 @@ const findNode = (nodes: FileManagerItemNode[], id: string, foundNode: FileManag
     }
 }
 
-export const updateVisibilitySettings = (settings: Record<string, ItemsVisibility>, node: FileManagerItemNode, actionType: ExpandCollapseType) => {
+export const updateVisibilitySettings = (settings: Record<string, ItemsVisibility>,
+                                         node: FileManagerItemNode, actionType: ExpandCollapseType) => {
   const parentVisibility = {isExpanded: actionType === 'expand', isDisplayed: true}
   settings[node.value.id] = parentVisibility
   
